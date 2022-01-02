@@ -8,6 +8,7 @@ let squares = ["", "", "", "", "", "", "", "", ""];
 let p1 = true;
 let p2 = false;
 let html = "";
+let tilesLeft = 9;
 
 const restartGame = () => {
   squares = ["", "", "", "", "", "", "", "", ""];
@@ -17,6 +18,7 @@ const restartGame = () => {
   board.addEventListener("click", clickedTile);
   p1 = true;
   p2 = false;
+  tilesLeft = 9;
   display.innerHTML = `
   <i class="far fa-clock"></i>
   <span>Player <span class="symbol">X</span> turn</span>
@@ -124,8 +126,8 @@ const checkDiagonals = () => {
       <i class="fas fa-trophy" style="color: gold"></i>
       <span><span class="symbol">${squares[0]}</span> is the WINNER!</span>
     `;
-    board.removeEventListener("click", clickedTile);
 
+    board.removeEventListener("click", clickedTile);
     restartBtn.classList.toggle("hide");
   }
   if (
@@ -144,34 +146,43 @@ const checkDiagonals = () => {
 };
 
 const checkForWinner = () => {
-  checkRows();
-  checkCols();
-  checkDiagonals();
+  if (tilesLeft <= 0) {
+    display.innerHTML = `
+        <i class="fab fa-black-tie"></i>
+        <span>ITS A TIE</span>`;
+    board.removeEventListener("click", clickedTile);
+    restartBtn.classList.toggle("hide");
+  } else {
+    checkRows();
+    checkCols();
+    checkDiagonals();
+  }
 };
 
 const clickedTile = (e) => {
   let target = e.target;
   let parent = e.target.parentNode;
   let indexOfTarget = [...parent.children].indexOf(target);
+
   if (target.classList[0] !== "board") {
+    tilesLeft--;
+
     if (p1) {
+      display.innerHTML = `
+        <i class="far fa-clock"></i>
+        <span>Player <span class="symbol">O</span> turn</span>`;
       updateBoard(indexOfTarget, "X");
       checkForWinner();
       p1 = false;
       p2 = true;
-      display.innerHTML = `
-  <i class="far fa-clock"></i>
-  <span>Player <span class="symbol">O</span> turn</span>
-  `;
     } else {
+      display.innerHTML = `
+        <i class="far fa-clock"></i>
+        <span>Player <span class="symbol">X</span> turn</span>`;
       updateBoard(indexOfTarget, "O");
       checkForWinner();
       p2 = false;
       p1 = true;
-      display.innerHTML = `
-  <i class="far fa-clock"></i>
-  <span>Player <span class="symbol">X</span> turn</span>
-  `;
     }
   }
 };
