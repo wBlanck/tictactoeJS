@@ -1,4 +1,3 @@
-// Remove event listener on the board when there is a winner
 const playerSymbol = document.querySelector(".symbol");
 const board = document.querySelector(".board");
 const display = document.querySelector(".display");
@@ -154,25 +153,26 @@ const clickedTile = (e) => {
   let target = e.target;
   let parent = e.target.parentNode;
   let indexOfTarget = [...parent.children].indexOf(target);
-
-  if (p1) {
-    updateBoard(indexOfTarget, "X");
-    checkForWinner();
-    p1 = false;
-    p2 = true;
-    display.innerHTML = `
+  if (target.classList[0] !== "board") {
+    if (p1) {
+      updateBoard(indexOfTarget, "X");
+      checkForWinner();
+      p1 = false;
+      p2 = true;
+      display.innerHTML = `
   <i class="far fa-clock"></i>
   <span>Player <span class="symbol">O</span> turn</span>
   `;
-  } else {
-    updateBoard(indexOfTarget, "O");
-    checkForWinner();
-    p2 = false;
-    p1 = true;
-    display.innerHTML = `
+    } else {
+      updateBoard(indexOfTarget, "O");
+      checkForWinner();
+      p2 = false;
+      p1 = true;
+      display.innerHTML = `
   <i class="far fa-clock"></i>
   <span>Player <span class="symbol">X</span> turn</span>
   `;
+    }
   }
 };
 
