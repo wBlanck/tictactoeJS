@@ -1,3 +1,5 @@
+// Remove event listener on the board when there is a winner
+
 const board = document.querySelector(".board");
 
 let squares = ["", "", "", "", "", "", "", "", ""];
@@ -94,12 +96,12 @@ board.addEventListener("click", (e) => {
 
   if (p1) {
     updateBoard(indexOfTarget, "X");
-    checkForWinner(indexOfTarget, "X");
+    checkForWinner();
     p1 = false;
     p2 = true;
   } else {
     updateBoard(indexOfTarget, "O");
-    checkForWinner(indexOfTarget, "O");
+    checkForWinner();
     p2 = false;
     p1 = true;
   }

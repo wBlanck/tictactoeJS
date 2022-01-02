@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
 *,
 *::after,
 *::before {
@@ -10,21 +11,55 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
+  font-family: "Cookie", cursive;
+  background-color: #0e153a;
+}
+h1 {
+  font-size: 3.5rem;
+  color: #e2f3f5;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.display {
+  text-align: center;
+  background-color: #22d1ee;
+  padding: 1.5rem 0;
+  font-size: 2rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+  color: #e2f3f5;
+}
+.symbol {
+  font-family: "Cookie";
+  font-size: 3rem;
+  color: #0e153a;
+}
+.display > i {
 }
 .board {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-  max-width: 315px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  background-color: #22d1ee;
+  padding: 1.5rem;
+  border-radius: 10px;
 }
+
 .board > div {
   height: 100px;
   width: 100px;
-  background-color: green;
+  border: 1px solid white;
+  border-radius: 10px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3rem;
+  color: #0e153a;
 }
