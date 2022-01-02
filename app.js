@@ -20,14 +20,17 @@ const restartGame = () => {
   p2 = false;
   tilesLeft = 9;
   display.innerHTML = `
-  <i class="far fa-clock"></i>
+  
   <span>Player <span class="symbol">X</span> turn</span>
   `;
 };
 
 const renderBoardElements = () => {
   // render squares/tiles
-  squares.forEach((square) => (html += `<div>${square ? square : ""}</div>`));
+  squares.forEach(
+    (square) =>
+      (html += `<div><span class="sym">${square ? square : ""}</span></div>`)
+  );
   board.innerHTML = html;
 };
 
@@ -169,7 +172,7 @@ const clickedTile = (e) => {
 
     if (p1) {
       display.innerHTML = `
-        <i class="far fa-clock"></i>
+        
         <span>Player <span class="symbol">O</span> turn</span>`;
       updateBoard(indexOfTarget, "X");
       checkForWinner();
@@ -177,7 +180,7 @@ const clickedTile = (e) => {
       p2 = true;
     } else {
       display.innerHTML = `
-        <i class="far fa-clock"></i>
+        
         <span>Player <span class="symbol">X</span> turn</span>`;
       updateBoard(indexOfTarget, "O");
       checkForWinner();

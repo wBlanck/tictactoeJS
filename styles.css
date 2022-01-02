@@ -29,19 +29,23 @@ h1 {
   text-align: center;
   background-color: #22d1ee;
   padding: 1.5rem 0;
-  font-size: 2rem;
+  font-size: 1.3rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   border-radius: 10px;
   color: #e2f3f5;
 }
+.display i {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 15px;
+}
 .symbol {
   font-family: "Cookie";
-  font-size: 3rem;
+  font-size: 2rem;
   color: #0e153a;
 }
-.display > i {
-}
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -59,24 +63,43 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
+  font-size: 2rem;
   color: #0e153a;
+  position: relative;
 }
 
 .restart {
   font-size: 3rem;
   color: #e2f3f5;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 25px;
   transition: 0.3s ease;
 }
 .hide {
   opacity: 0;
   visibility: hidden;
 }
-
+.sym {
+  position: absolute;
+}
 @media screen and (min-width: 999px) {
+  .display {
+    text-align: center;
+    background-color: #22d1ee;
+    padding: 1.5rem 0;
+    font-size: 2rem;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    border-radius: 10px;
+    color: #e2f3f5;
+  }
+  .symbol {
+    font-family: "Cookie";
+    font-size: 3rem;
+    color: #0e153a;
+  }
   .board > div {
     padding: 3rem;
+    font-size: 3rem;
   }
 }
