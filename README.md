@@ -3,4 +3,4 @@
 - [x] game logic
 - [ ] Refactor Code
 - [ ] Finish CSS
-- [ ] Add more user feedback when playing
+- [x] Add more user feedback when playing
